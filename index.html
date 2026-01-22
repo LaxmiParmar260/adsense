@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AdSense Testt</title>
+    <script src="env-config.js"></script>
+  </head>
+  <body>
+    <script>
+      console.log("ENV CONFIG:", window.ENV_CONFIG);
+      console.log("FEATURE FLAGS:", window.FEATURE_FLAGS);
+      console.log("Publisher ID:", window.ADSENSE_PUBLISHER_ID);
+    </script>
+
+    <script>
+      if (window.FEATURE_FLAGS && window.FEATURE_FLAGS.enableAds) {
+        console.log("✅ Ads enabled. Loading AdSense script...");
+        const s = document.createElement("script");
+        s.async = true;
+        s.src =
+          "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
+          window.ADSENSE_PUBLISHER_ID;
+        s.crossOrigin = "anonymous";
+        document.head.appendChild(s);
+      } else {
+        console.log("❌ Ads disabled by environment config");
+      }
+    </script>
+
+    <ins
+      class="adsbygoogle"
+      style="display: block; min-height: 280px; background: #f2f2f2"
+      data-ad-client="ca-pub-3289856543483173"
+      data-ad-slot="8736319572"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+
+  <script>
+  if (window.FEATURE_FLAGS && window.FEATURE_FLAGS.enableAds) {
+    console.log("📢 Pushing ad request...");
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  }
+</script>
+
+
+    <p>
+      This website is about chat applications, productivity tools and
+      communication systems.
+    </p>
+
+    <!-- <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script> -->
+  </body>
+</html>
